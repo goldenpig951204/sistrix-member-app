@@ -193,10 +193,9 @@ module.exports = async function (request, reply) {
             body = handlerHelpers.injectPageBase(body, requestFullUrl, realFullUrl);
 
             const $ = cheerio.load(body);
-            $("#test-upgrade-button").remove();
-            $(".test-account-upgrade-bar .upgrade-bar.right").css({top: "-14px"});
+            $(".test-account-upgrade-bar").remove();
             $(".logo-dropdown-menu .logo-dropdown-item").attr("data-link", `https://${currentDomain}/toolbox`);
-            if (!request.user.isAdmin) {
+            if (typeof request.user.isAdmin !== "undefined" && !request.user.isAdmin) {
                 if (/^\/account/.test(request.path)) {
                     $("#body #content").html("<h1 style='text-align: center'>Access permission is denied.</h1>")
                 }
