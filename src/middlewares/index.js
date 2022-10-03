@@ -478,7 +478,7 @@ const seolyzeMiddleware = (prefix) => {
 
 const applyMiddleware = async (req, res, next) => {
     let domain = req.headers["host"];
-    domain = "sis.oceanserver.link";
+    // domain = "sis.oceanserver.link";
     let setting = await settingModel.findOne();
     let proxy = await proxyModel.findOne({domain});
     if (proxy !== null) {
